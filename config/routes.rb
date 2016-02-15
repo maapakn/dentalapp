@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :pedidos
+  resources :materials
+  resources :trabajos
+  resources :dientes
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
