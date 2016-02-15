@@ -1,29 +1,68 @@
-<h2>Sign up</h2>
+<div class="container well formborder">
+        <div class="col-md-9 center-block no-float">
+            <h2><span class="fa fa-star"></span> Registrarse</h2>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <%= devise_error_messages! %>
+                
+                <div class="form-group">
+                  <%= f.label :roles, 'Seleccione el tipo de Impresion' %><br/>
+                  <%= f.label :roles, 'Impresion Convensional:' %>
+                  <%= f.radio_button :roles_mask, 'useranalogo', :checked => true %>
+                  <%= f.label :roles, 'Impresion Digital:' %>
+                  <%= f.radio_button :roles_mask, 'userdigital'%>
+                </div>
+                
+                <div class="form-group">
+                  <%= f.label :email, 'Email'%><br />
+                  <%= f.email_field :email, autofocus: true, class: "form-control" %>
+                </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+                <div class="form-group">
+                  <%= f.label :nombre, 'Nombre' %><br />
+                  <%= f.text_field :nombre, class: "form-control", pattern:"[a-zA-Z, ' ', 'ñ','Ñ','á','é','í','ó','ú','Á','É','Í','Ó','Ú','Ü','ü']+", oninvalid:"setCustomValidity('Favor ingresar solo letras ')"  %>
+                </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+                 <div class="form-group">
+                  <%= f.label :rut, 'RUT' %><br />
+                  <%= f.text_field :rut,placeholder:"11.111.111-1", class: "form-control" %>
+                </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+                <div class="form-group">
+                <%= f.label :telefono, 'Telefono' %><br />
+                <%= f.text_field :telefono, class: "form-control" %>
+                </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+                <div class="form-group">
+                  <%= f.label :direccion, 'Dirección' %><br />
+                  <%= f.text_field :direccion, autocomplete: "off", class: "form-control" %>
+                </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+                <div class="form-group">
+                  <%= f.label :facturacion, '¿Desea Boleta o Factura?' %><br/>
+                  <%= f.label :facturacion, 'Boleta:' %>
+                  <%= f.radio_button :facturacion, 'Boleta', :checked => true %>
+                  <%= f.label :facturacion, 'Factura:' %>
+                  <%= f.radio_button :facturacion, 'Factura'%>
+                </div>
 
-<%= render "devise/shared/links" %>
+                <div class="form-group">
+                  <%= f.label :password, 'Contraseña' %>
+                  <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> caracteres minimo)</em>
+                  <% end %><br />
+                  <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :password_confirmation, 'Confirmar Contraseña' %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+                </div>
+
+                <div class="actions">
+                  <%= f.submit "Registrarse", class: "btn btn-success"%>
+                </div>
+              <% end %>
+              
+              <%= render "devise/shared/links" %>
+      </div>
+</div>
