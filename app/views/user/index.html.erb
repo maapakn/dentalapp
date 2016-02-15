@@ -1,0 +1,34 @@
+<div class="container well formborderUser">
+    <div class="row">
+      <div class="form_title">
+        <h1>Usuarios</h1>
+      </div>
+      <div class="col-md-10 center-block no-float">
+      <div class="table-responsive">
+      <table class="table">
+      <tbody>
+        <tr>
+          <td><b>Correo</b></td>
+          <td><b>Nombre</b></td>
+          <td><b>Dirección</b></td>
+          <td><b>Rut</b></td>
+          <td><b>Teléfono</b></td>
+        </tr>
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= user.email %></td>
+          <td><%= user.nombre %></td>
+          <td><%= user.direccion %></td>
+          <td><%= user.rut %></td>
+          <td><%= user.telefono %></td>
+          <td><%= link_to 'Ver', user, 'data-no-turbolink' => true, class:"btn btn-success" %></td>
+          <td><%= link_to 'Editar', user_edit(user), 'data-no-turbolink' => true, class:"btn btn-success" %></td>
+          <td><%= link_to 'Eliminar', user, method: :delete, data: { confirm: '¿Esta seguro que desea eliminar el usuario?' } 'data-no-turbolink' => true, class:"btn btn-success" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+      </table>
+      </div>
+      </div>
+    </div>
+</div>

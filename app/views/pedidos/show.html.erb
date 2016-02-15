@@ -1,5 +1,8 @@
 <p id="notice"><%= notice %></p>
 
+<div class="field">
+  <%= image_tag @pedido.cover.url() %>
+</div>
 <p>
   <strong>Nombre:</strong>
   <%= @pedido.nombre %>
@@ -12,17 +15,18 @@
 
 <p>
   <strong>Trabajo:</strong>
-  <%= @pedido.trabajo %>
+  <%= @pedido.trabajo.nombre %>
 </p>
 
 <p>
   <strong>Material:</strong>
-  <%= @pedido.material %>
+  <%= @pedido.material.nombre %>
 </p>
-
 <p>
-  <strong>User:</strong>
-  <%= @pedido.user %>
+  <strong>Dientes:</strong>
+  <% @pedido.dientes.each do |diente| %>
+      <h4><%= link_to diente.numero, diente %></h4>
+  <%end%>
 </p>
 
 <%= link_to 'Edit', edit_pedido_path(@pedido) %> |

@@ -10,26 +10,38 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= f.label :nombre %><br>
+  <% if current_user.roles_mask == "userdigital" %>
+    Subir Archivo STL: <%= f.file_field :archivo %>
+  <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :nombre, 'Nombre del Paciente' %><br>
     <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :trabajo_id %><br>
+    <%= collection_select(:pedido, :trabajo_id, Trabajo.all, :id, :nombre) %> 
+  </div>
+  <div class="field">
+    <%= f.label :material_id %><br>
+    <%= collection_select(:pedido, :material_id, Material.all, :id, :nombre) %>
+  </div>
+  <div class="field">
+  <label>Dientes</label>
+      <% @dientes.each do |diente| %>
+      <div class="field">
+        <%= check_box_tag "dientes[]", diente.id %> <%= diente.numero %>
+      </div>
+
+      <% end %>
   </div>
   <div class="field">
     <%= f.label :observacion %><br>
     <%= f.text_area :observacion %>
   </div>
   <div class="field">
-    <%= f.label :trabajo_id %><br>
-    <%= f.text_field :trabajo_id %>
-  </div>
-  <div class="field">
-    <%= f.label :material_id %><br>
-    <%= f.text_field :material_id %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+    Imagen de Observacion: <%= f.file_field :cover %>
   </div>
   <div class="actions">
     <%= f.submit %>
