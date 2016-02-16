@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160215215503) do
+ActiveRecord::Schema.define(version: 20160215215433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,16 +37,12 @@ ActiveRecord::Schema.define(version: 20160215215503) do
     t.integer  "trabajo_id"
     t.integer  "material_id"
     t.integer  "user_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "cover_file_name"
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
-    t.string   "archivo_file_name"
-    t.string   "archivo_content_type"
-    t.integer  "archivo_file_size"
-    t.datetime "archivo_updated_at"
   end
 
   add_index "pedidos", ["material_id"], name: "index_pedidos_on_material_id", using: :btree
