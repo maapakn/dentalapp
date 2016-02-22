@@ -11,11 +11,6 @@
     </div>
   <% end %>
   <div class="field">
-  <% if current_user.roles_mask == "userdigital" %>
-    Subir Archivo STL: <%= f.file_field :archivo %>
-  <% end %>
-  </div>
-  <div class="field">
     <%= f.label :nombre, 'Nombre del Paciente' %><br>
     <%= f.text_field :nombre %>
   </div>
@@ -25,16 +20,23 @@
   </div>
   <div class="field">
     <%= f.label :material_id %><br>
-    <%= collection_select(:pedido, :material_id, Material.all, :id, :nombre) %>
+    <%= collection_select(:pedido, :trabajo_id, Material.all, :id, :nombre) %>
+    <script src="multiple-select.js"></script>
+    <script>
+        $("select").multipleSelect({
+            single: true,
+            multipleWidth: 55,
+            width: '10%'
+        });
+    </script>
+    </script>
   </div>
   <div class="field">
   <label>Dientes</label>
-      <% @dientes.each do |diente| %>
-      <div class="field">
-        <%= check_box_tag "dientes[]", diente.id %> <%= diente.numero %>
-      </div>
+    <div class="field">
 
-      <% end %>
+    </div>
+     
   </div>
   <div class="field">
     <%= f.label :observacion %><br>

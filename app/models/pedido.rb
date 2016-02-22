@@ -5,13 +5,13 @@ class Pedido < ActiveRecord::Base
   has_many :pedidos_dientes
   has_many :dientes, through: :pedidos_dientes
 
-  has_attached_file :cover, style: { medium: "1280x720", thumb:"800x600" }
+  has_attached_file :cover, presence: true, style: { medium: "1280x720", thumb:"800x600" }
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
 
-  has_attached_file :archivo
-  validates_attachment_content_type :archivo, :content_type => ['application/sla','application/vnd.ms-pki.stl','application/x-navistyle']
+  has_attached_file :archivo, presence: true
+  validates_attachment_content_type :archivo, content_type: /\.\/.*\doc/
 
-  after_create :save_dientes
+  #after_create :save_dientes
 
   def dientes=(value)
   	@dientes = value
@@ -19,10 +19,10 @@ class Pedido < ActiveRecord::Base
 
   private
 
-  def save_dientes
-  	@dientes.each do |diente_id|
-  		PedidosDiente.create(diente_id: diente_id, pedido_id: self.id)
-  	end
-  end
+  #def save_dientes
+  #	@dientes.each do |diente_id|
+  #		PedidosDiente.create(diente_id: diente_id, pedido_id: self.id)
+  #	end
+  #end
 
 end

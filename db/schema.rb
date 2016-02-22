@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160215215433) do
+ActiveRecord::Schema.define(version: 20160217260700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,9 @@ ActiveRecord::Schema.define(version: 20160215215433) do
 
   create_table "materials", force: :cascade do |t|
     t.string   "nombre"
-    t.integer  "trabajo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "materials", ["trabajo_id"], name: "index_materials_on_trabajo_id", using: :btree
 
   create_table "pedidos", force: :cascade do |t|
     t.string   "nombre"
@@ -37,12 +34,16 @@ ActiveRecord::Schema.define(version: 20160215215433) do
     t.integer  "trabajo_id"
     t.integer  "material_id"
     t.integer  "user_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.string   "cover_file_name"
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
+    t.string   "archivo_file_name"
+    t.string   "archivo_content_type"
+    t.integer  "archivo_file_size"
+    t.datetime "archivo_updated_at"
   end
 
   add_index "pedidos", ["material_id"], name: "index_pedidos_on_material_id", using: :btree
@@ -98,7 +99,6 @@ ActiveRecord::Schema.define(version: 20160215215433) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "materials", "trabajos"
   add_foreign_key "pedidos", "materials"
   add_foreign_key "pedidos", "trabajos"
   add_foreign_key "pedidos", "users"

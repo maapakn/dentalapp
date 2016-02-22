@@ -1,6 +1,7 @@
 class PedidosController < ApplicationController
   before_action :set_pedido, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  Ruta_directorio_archivos = "public/archivos/";
 
   # GET /pedidos
   # GET /pedidos.json

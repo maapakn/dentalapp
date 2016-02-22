@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :pedidos
+  get "archivos/subir_archivos"
+  post "archivos/subir_archivos"
+
+  resources :pedidos 
   resources :materials
   resources :trabajos
   resources :dientes
