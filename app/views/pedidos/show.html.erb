@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<<<<<<< HEAD
+=======
+<div class="field">
+  <%= image_tag @pedido.cover.url() %>
+</div>
+>>>>>>> f169e474be587b3ee9ee0633471e5a58ceb41854
 <p>
   <strong>Nombre:</strong>
   <%= @pedido.nombre %>
@@ -12,17 +18,31 @@
 
 <p>
   <strong>Trabajo:</strong>
+<<<<<<< HEAD
   <%= @pedido.trabajo %>
+=======
+  <%= @pedido.trabajo.nombre %>
+>>>>>>> f169e474be587b3ee9ee0633471e5a58ceb41854
 </p>
 
 <p>
   <strong>Material:</strong>
+<<<<<<< HEAD
   <%= @pedido.material %>
 </p>
 
 <p>
   <strong>User:</strong>
   <%= @pedido.user %>
+=======
+  <%= @pedido.material.nombre %>
+</p>
+<p>
+  <strong>Dientes:</strong>
+  <% @pedido.dientes.each do |diente| %>
+      <h4><%= link_to diente.numero, diente %></h4>
+  <%end%>
+>>>>>>> f169e474be587b3ee9ee0633471e5a58ceb41854
 </p>
 
 <%= link_to 'Edit', edit_pedido_path(@pedido) %> |

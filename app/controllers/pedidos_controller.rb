@@ -1,5 +1,10 @@
 class PedidosController < ApplicationController
   before_action :set_pedido, only: [:show, :edit, :update, :destroy]
+<<<<<<< HEAD
+=======
+  before_action :authenticate_user!
+  Ruta_directorio_archivos = "public/archivos/";
+>>>>>>> f169e474be587b3ee9ee0633471e5a58ceb41854
 
   # GET /pedidos
   # GET /pedidos.json
@@ -15,6 +20,10 @@ class PedidosController < ApplicationController
   # GET /pedidos/new
   def new
     @pedido = Pedido.new
+<<<<<<< HEAD
+=======
+    @dientes = Diente.all
+>>>>>>> f169e474be587b3ee9ee0633471e5a58ceb41854
   end
 
   # GET /pedidos/1/edit
@@ -24,8 +33,14 @@ class PedidosController < ApplicationController
   # POST /pedidos
   # POST /pedidos.json
   def create
+<<<<<<< HEAD
     @pedido = Pedido.new(pedido_params)
 
+=======
+    @pedido = current_user.pedidos.new(pedido_params)
+    @pedido.dientes = params[:dientes] 
+    
+>>>>>>> f169e474be587b3ee9ee0633471e5a58ceb41854
     respond_to do |format|
       if @pedido.save
         format.html { redirect_to @pedido, notice: 'Pedido was successfully created.' }
@@ -69,6 +84,10 @@ class PedidosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
+<<<<<<< HEAD
       params.require(:pedido).permit(:nombre, :observacion, :trabajo_id, :material_id, :user_id)
+=======
+      params.require(:pedido).permit(:nombre, :observacion, :trabajo_id, :material_id, :dientes, :cover, :archivo)
+>>>>>>> f169e474be587b3ee9ee0633471e5a58ceb41854
     end
 end

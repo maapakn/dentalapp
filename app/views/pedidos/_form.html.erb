@@ -10,6 +10,7 @@
       </ul>
     </div>
   <% end %>
+<<<<<<< HEAD
 
   <div class="field">
     <%= f.label :nombre %><br>
@@ -30,6 +31,42 @@
   <div class="field">
     <%= f.label :user_id %><br>
     <%= f.text_field :user_id %>
+=======
+  <div class="field">
+    <%= f.label :nombre, 'Nombre del Paciente' %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :trabajo_id %><br>
+    <%= collection_select(:pedido, :trabajo_id, Trabajo.all, :id, :nombre) %> 
+  </div>
+  <div class="field">
+    <%= f.label :material_id %><br>
+    <%= collection_select(:pedido, :trabajo_id, Material.all, :id, :nombre) %>
+    <script src="multiple-select.js"></script>
+    <script>
+        $("select").multipleSelect({
+            single: true,
+            multipleWidth: 55,
+            width: '10%'
+        });
+    </script>
+    </script>
+  </div>
+  <div class="field">
+  <label>Dientes</label>
+    <div class="field">
+
+    </div>
+     
+  </div>
+  <div class="field">
+    <%= f.label :observacion %><br>
+    <%= f.text_area :observacion %>
+  </div>
+  <div class="field">
+    Imagen de Observacion: <%= f.file_field :cover %>
+>>>>>>> f169e474be587b3ee9ee0633471e5a58ceb41854
   </div>
   <div class="actions">
     <%= f.submit %>

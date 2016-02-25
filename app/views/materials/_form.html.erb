@@ -17,7 +17,11 @@
   </div>
   <div class="field">
     <%= f.label :trabajo_id %><br>
+<<<<<<< HEAD
     <%= f.text_field :trabajo_id %>
+=======
+    <%= collection_select(:material, :trabajo_id, Trabajo.all, :id, :nombre) %> 
+>>>>>>> f169e474be587b3ee9ee0633471e5a58ceb41854
   </div>
   <div class="actions">
     <%= f.submit %>

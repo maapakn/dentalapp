@@ -15,7 +15,11 @@
     <% @materials.each do |material| %>
       <tr>
         <td><%= material.nombre %></td>
+<<<<<<< HEAD
         <td><%= material.trabajo %></td>
+=======
+        <td><%= material.trabajo.nombre %></td>
+>>>>>>> f169e474be587b3ee9ee0633471e5a58ceb41854
         <td><%= link_to 'Show', material %></td>
         <td><%= link_to 'Edit', edit_material_path(material) %></td>
         <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
