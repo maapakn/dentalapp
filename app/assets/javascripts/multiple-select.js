@@ -736,10 +736,10 @@
         filterAcceptOnEnter: false,
         hideOptgroupCheckboxes: false,
 
-        selectAllText: 'Select all',
-        allSelected: 'All selected',
-        countSelected: '# of % selected',
-        noMatchesFound: 'No matches found',
+        selectAllText: 'Seleccionar Todo',
+        allSelected: 'Todo Selecionado',
+        countSelected: '# de % seleccionado',
+        noMatchesFound: 'No se encontraron coincidencias',
 
         styler: function () {
             return false;

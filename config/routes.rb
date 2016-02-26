@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
   resources :pedidos
-=======
 
   get "archivos/subir_archivos"
   post "archivos/subir_archivos"
 
   resources :pedidos 
->>>>>>> f169e474be587b3ee9ee0633471e5a58ceb41854
   resources :materials
   resources :trabajos
   resources :dientes

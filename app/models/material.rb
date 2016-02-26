@@ -1,7 +1,19 @@
 class Material < ActiveRecord::Base
-  belongs_to :trabajo
-<<<<<<< HEAD
-=======
   has_many :pedidos
->>>>>>> f169e474be587b3ee9ee0633471e5a58ceb41854
+  has_many :trabajos_materials
+  has_many :trabajos, through: :trabajos_materials
+
+after_create :save_trabajos
+
+  def trabajos=(value)
+  	@trabajos = value
+  end
+
+  private
+
+  def save_trabajos
+  	@trabajos.each do |trabajo_id|
+  		TrabajosMaterial.create(trabajo_id: trabajo_id, material_id: self.id)
+  	end
+  end
 end

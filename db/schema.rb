@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20160215215503) do
-=======
-ActiveRecord::Schema.define(version: 20160217260700) do
->>>>>>> f169e474be587b3ee9ee0633471e5a58ceb41854
+ActiveRecord::Schema.define(version: 20160226035242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,19 +24,10 @@ ActiveRecord::Schema.define(version: 20160217260700) do
 
   create_table "materials", force: :cascade do |t|
     t.string   "nombre"
-<<<<<<< HEAD
-    t.integer  "trabajo_id"
-=======
->>>>>>> f169e474be587b3ee9ee0633471e5a58ceb41854
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
-  add_index "materials", ["trabajo_id"], name: "index_materials_on_trabajo_id", using: :btree
-
-=======
->>>>>>> f169e474be587b3ee9ee0633471e5a58ceb41854
   create_table "pedidos", force: :cascade do |t|
     t.string   "nombre"
     t.text     "observacion"
@@ -72,6 +59,14 @@ ActiveRecord::Schema.define(version: 20160217260700) do
 
   add_index "pedidos_dientes", ["diente_id"], name: "index_pedidos_dientes_on_diente_id", using: :btree
   add_index "pedidos_dientes", ["pedido_id"], name: "index_pedidos_dientes_on_pedido_id", using: :btree
+
+  create_table "trabajo_materials", force: :cascade do |t|
+    t.integer "trabajo_id"
+    t.integer "material_id"
+  end
+
+  add_index "trabajo_materials", ["material_id"], name: "index_trabajo_materials_on_material_id", using: :btree
+  add_index "trabajo_materials", ["trabajo_id"], name: "index_trabajo_materials_on_trabajo_id", using: :btree
 
   create_table "trabajos", force: :cascade do |t|
     t.string   "nombre"
@@ -112,13 +107,11 @@ ActiveRecord::Schema.define(version: 20160217260700) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-<<<<<<< HEAD
-  add_foreign_key "materials", "trabajos"
-=======
->>>>>>> f169e474be587b3ee9ee0633471e5a58ceb41854
   add_foreign_key "pedidos", "materials"
   add_foreign_key "pedidos", "trabajos"
   add_foreign_key "pedidos", "users"
   add_foreign_key "pedidos_dientes", "dientes"
   add_foreign_key "pedidos_dientes", "pedidos"
+  add_foreign_key "trabajo_materials", "materials"
+  add_foreign_key "trabajo_materials", "trabajos"
 end

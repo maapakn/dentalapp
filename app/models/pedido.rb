@@ -2,8 +2,6 @@ class Pedido < ActiveRecord::Base
   belongs_to :trabajo
   belongs_to :material
   belongs_to :user
-<<<<<<< HEAD
-=======
   has_many :pedidos_dientes
   has_many :dientes, through: :pedidos_dientes
 
@@ -27,5 +25,4 @@ class Pedido < ActiveRecord::Base
   #	end
   #end
 
->>>>>>> f169e474be587b3ee9ee0633471e5a58ceb41854
 end

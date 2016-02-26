@@ -15,6 +15,7 @@ class MaterialsController < ApplicationController
   # GET /materials/new
   def new
     @material = Material.new
+    @trabajos = Trabajo.all
   end
 
   # GET /materials/1/edit
@@ -26,6 +27,7 @@ class MaterialsController < ApplicationController
   def create
     @material = Material.new(material_params)
 
+    @material.trabajos = params[:trabajos] 
     respond_to do |format|
       if @material.save
         format.html { redirect_to @material, notice: 'Material was successfully created.' }
@@ -69,6 +71,6 @@ class MaterialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def material_params
-      params.require(:material).permit(:nombre, :trabajo_id)
+      params.require(:material).permit(:nombre, :trabajos)
     end
 end
