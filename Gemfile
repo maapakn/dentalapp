@@ -41,6 +41,7 @@ gem 'owlcarousel2-rails', github: 'openscript/owlcarousel2-rails'
 gem 'mailcatcher'
 gem 'activemerchant'
 gem 'rut_validator'
+gem 'chosen-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -16,7 +16,7 @@
   </div>
   <div class="field">
     <%= f.label :trabajo_id %><br>
-    <%= collection_select(:pedido, :trabajo_id, Trabajo.all, :id, :nombre) %> 
+    <%= collection_select(:pedido, :trabajo_id, Trabajo.all, :id, :nombre, class:'chosen-select') %> 
     <script>
         $("select").multipleSelect({
             multiple: true,
