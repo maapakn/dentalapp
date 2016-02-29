@@ -3,10 +3,10 @@ class Material < ActiveRecord::Base
   has_many :trabajos_materials
   has_many :trabajos, through: :trabajos_materials
 
-after_create :save_trabajos
+  after_create :save_trabajos
 
-  def trabajos=(value)
-  	@trabajos = value
+  def trabajos=(values)
+  	@trabajos = values
   end
 
   private

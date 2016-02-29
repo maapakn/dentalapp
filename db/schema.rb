@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226035242) do
+ActiveRecord::Schema.define(version: 20160226201155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,19 +60,19 @@ ActiveRecord::Schema.define(version: 20160226035242) do
   add_index "pedidos_dientes", ["diente_id"], name: "index_pedidos_dientes_on_diente_id", using: :btree
   add_index "pedidos_dientes", ["pedido_id"], name: "index_pedidos_dientes_on_pedido_id", using: :btree
 
-  create_table "trabajo_materials", force: :cascade do |t|
-    t.integer "trabajo_id"
-    t.integer "material_id"
-  end
-
-  add_index "trabajo_materials", ["material_id"], name: "index_trabajo_materials_on_material_id", using: :btree
-  add_index "trabajo_materials", ["trabajo_id"], name: "index_trabajo_materials_on_trabajo_id", using: :btree
-
   create_table "trabajos", force: :cascade do |t|
     t.string   "nombre"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "trabajos_materials", force: :cascade do |t|
+    t.integer "trabajo_id"
+    t.integer "material_id"
+  end
+
+  add_index "trabajos_materials", ["material_id"], name: "index_trabajos_materials_on_material_id", using: :btree
+  add_index "trabajos_materials", ["trabajo_id"], name: "index_trabajos_materials_on_trabajo_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -112,6 +112,6 @@ ActiveRecord::Schema.define(version: 20160226035242) do
   add_foreign_key "pedidos", "users"
   add_foreign_key "pedidos_dientes", "dientes"
   add_foreign_key "pedidos_dientes", "pedidos"
-  add_foreign_key "trabajo_materials", "materials"
-  add_foreign_key "trabajo_materials", "trabajos"
+  add_foreign_key "trabajos_materials", "materials"
+  add_foreign_key "trabajos_materials", "trabajos"
 end

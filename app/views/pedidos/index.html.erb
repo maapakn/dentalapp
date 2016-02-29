@@ -6,10 +6,6 @@
   <thead>
     <tr>
       <th>Nombre</th>
-      <th>Observacion</th>
-      <th>Trabajo</th>
-      <th>Material</th>
-      <th>User</th>
       <th>Trabajo</th>
       <th>Material</th>
       <th>Observacion</th>
@@ -21,16 +17,12 @@
     <% @pedidos.each do |pedido| %>
       <tr>
         <td><%= pedido.nombre %></td>
-        <td><%= pedido.observacion %></td>
-        <td><%= pedido.trabajo %></td>
-        <td><%= pedido.material %></td>
-        <td><%= pedido.user %></td>
         <td><%= pedido.trabajo.nombre %></td>
         <td><%= pedido.material.nombre %></td>
         <td><%= pedido.observacion %></td>
         <td><%= link_to 'Show', pedido %></td>
         <td><%= link_to 'Edit', edit_pedido_path(pedido) %></td>
-        <td><%= link_to 'Destroy', pedido, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', pedido, method: :delete, data: { confirm: '¿Estas seguro que desea eliminar?' } %></td>
       </tr>
     <% end %>
   </tbody>

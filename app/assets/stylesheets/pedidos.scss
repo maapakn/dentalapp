@@ -2,13 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$ ->
-  # enable chosen js
-  $('.chosen-select').chosen
-    allow_single_deselect: true
-    no_results_text: 'No results matched'
-    width: '200px'
-
 .w300 {
     width: 300px;
 }

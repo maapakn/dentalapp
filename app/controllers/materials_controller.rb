@@ -26,8 +26,8 @@ class MaterialsController < ApplicationController
   # POST /materials.json
   def create
     @material = Material.new(material_params)
+    @material.trabajos = params[:trabajos]
 
-    @material.trabajos = params[:trabajos] 
     respond_to do |format|
       if @material.save
         format.html { redirect_to @material, notice: 'Material was successfully created.' }

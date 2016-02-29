@@ -15,8 +15,6 @@
     <% @materials.each do |material| %>
       <tr>
         <td><%= material.nombre %></td>
-        <td><%= material.trabajo %></td>
-        <td><%= material.trabajo.nombre %></td>
         <td><%= link_to 'Show', material %></td>
         <td><%= link_to 'Edit', edit_material_path(material) %></td>
         <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
