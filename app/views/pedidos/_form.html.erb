@@ -11,17 +11,21 @@
     </div>
   <% end %>
   <div class="field">
+    Cargar STL: <%= f.file_field :archivo %>
+  </div>
+  <div class="field">
     <%= f.label :nombre, 'Nombre del Paciente' %><br>
     <%= f.text_field :nombre %>
   </div>
   <div class="field">
     <%= f.label :trabajo_id %><br>
-    <%= collection_select(:pedido, :trabajo_id, Trabajo.all, :id, :nombre, class:'chosen-select') %> 
+    <%= collection_select(:pedido, :trabajo_id, Trabajo.all, :id, :nombre, {:class => "select", :style=>'width:35%'}) %> 
+  <script src="multiple-select.js"></script>
     <script>
         $("select").multipleSelect({
             single: true,
             multipleWidth: 55,
-            width: '25%'
+            width: '23%'
         });
     </script>
   </div>
@@ -101,6 +105,6 @@
     Imagen de Observacion: <%= f.file_field :cover %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Realizar Pedido'%>
   </div>
 <% end %>

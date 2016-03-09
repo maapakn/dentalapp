@@ -42,6 +42,7 @@ gem 'mailcatcher'
 gem 'activemerchant'
 gem 'rut_validator'
 gem 'chosen-rails'
+gem 'actionpack'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

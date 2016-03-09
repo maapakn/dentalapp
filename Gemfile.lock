@@ -275,6 +275,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
+  actionpack
   activemerchant
   bootstrap-sass
   bootstrap-select-rails

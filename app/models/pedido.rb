@@ -9,7 +9,7 @@ class Pedido < ActiveRecord::Base
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
 
   has_attached_file :archivo, presence: true
-  validates_attachment_content_type :archivo, content_type: /\.\/.*\doc/
+  validates_attachment_content_type :archivo, content_type: { content_type: "application/vnd.ms-pki.stl" }
 
   #after_create :save_dientes
 
