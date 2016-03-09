@@ -32,6 +32,7 @@ class PedidosController < ApplicationController
 
     @pedido = current_user.pedidos.new(pedido_params)
     @pedido.dientes = params[:dientes] 
+    @pedido.file = params[:file]
     
     respond_to do |format|
       if @pedido.save
@@ -68,6 +69,15 @@ class PedidosController < ApplicationController
     end
   end
 
+  def upload_file(file)
+    # Declaring
+    uploader = FileUploader.new
+    # Upload it
+    uploader.store!(file)
+
+    return uploader.url
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pedido
@@ -76,6 +86,6 @@ class PedidosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
-      params.require(:pedido).permit(:nombre, :observacion, :trabajo_id, :material_id, :cover, :archivo, :diente_ids => [])
+      params.require(:pedido).permit(:nombre, :observacion, :trabajo_id, :material_id, :cover, :archivo, :file, :diente_ids => [])
     end
 end

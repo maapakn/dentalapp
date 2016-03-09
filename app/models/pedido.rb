@@ -8,8 +8,7 @@ class Pedido < ActiveRecord::Base
   has_attached_file :cover, presence: true, style: { medium: "1280x720", thumb:"800x600" }
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
 
-  has_attached_file :archivo, presence: true
-  validates_attachment_content_type :archivo, content_type: { content_type: "application/vnd.ms-pki.stl" }
+  mount_uploader :file, FileUploader
 
   #after_create :save_dientes
 

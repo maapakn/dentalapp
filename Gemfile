@@ -43,6 +43,7 @@ gem 'activemerchant'
 gem 'rut_validator'
 gem 'chosen-rails'
 gem 'actionpack'
+gem 'carrierwave'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
