@@ -124,6 +124,7 @@ es:
       too_short: es demasiado corto (%{count} caracteres mínimo)
       wrong_length: no tiene la longitud correcta (%{count} caracteres exactos)
       other_than: debe ser distinto de %{count}
+      extension_white_list_error: El archivo debe ser STL
     template:
       body: 'Se encontraron problemas con los siguientes campos:'
       header:

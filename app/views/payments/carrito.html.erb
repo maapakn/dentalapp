@@ -1,0 +1,23 @@
+<h1> <i class="fa fa-shopping-cart"></i> Mi carrito</h1>
+<ul class="list-group">
+	<% @payments.each do |payment| %>
+		<li class="list-group-item">
+			<div class="row">
+				<div class="col-md-8">
+					<%= payment.pedido.nombre %>
+				</div>
+				<div class="col-md-3 text-right">
+					<%= "#{payment.pedido.price}USD" unless payment.pedido.price.nil? %>
+				</div>
+			</div>
+		</li>
+	<% end %>
+	<li class="list-group-item">
+		<div class="col-md-8">Total</div>
+		<div class="col-md-3 text-right">
+			<div>
+				<%= current_user.costo_pendiente %>USD
+			</div>
+		</div>
+	</li>
+</ul>

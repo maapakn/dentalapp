@@ -2,6 +2,7 @@ class Pedido < ActiveRecord::Base
   belongs_to :trabajo
   belongs_to :material
   belongs_to :user
+  has_many :payments
   has_many :pedidos_dientes
   has_many :dientes, through: :pedidos_dientes
 
@@ -9,19 +10,23 @@ class Pedido < ActiveRecord::Base
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\Z/
 
   mount_uploader :file, FileUploader
-
-  #after_create :save_dientes
+  #validate :mime_type_of ,:if => :if_changed?
+  #AVAILABLE_MIMETYPE = %w(stl)
 
   def dientes=(value)
-  	@dientes = value
+    @dientes = value
   end
 
   private
 
-  #def save_dientes
-  #	@dientes.each do |diente_id|
-  #		PedidosDiente.create(diente_id: diente_id, pedido_id: self.id)
-  #	end
+  #def mime_type_of
+  #  AVAILABLE::MIMETYPE.include?(MIME::Types.type_for[file_path][0]) 
   #end
 
+  #def if_changed?
+  #  new_record? or file_changed?
+  #end
+
+  
+  
 end

@@ -1,0 +1,2 @@
+class UserconvenioController < ApplicationController
+end

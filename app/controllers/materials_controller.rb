@@ -20,6 +20,7 @@ class MaterialsController < ApplicationController
 
   # GET /materials/1/edit
   def edit
+    @trabajos = Trabajo.all
   end
 
   # POST /materials
@@ -71,6 +72,6 @@ class MaterialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def material_params
-      params.require(:material).permit(:nombre, :trabajos)
+      params.require(:material).permit(:nombre, :precio, :trabajos)
     end
 end

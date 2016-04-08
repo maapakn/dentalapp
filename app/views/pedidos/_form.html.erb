@@ -10,9 +10,11 @@
       </ul>
     </div>
   <% end %>
+  <% if current_user.roles_mask == 'userdigital' %>
   <div class="field">
     Cargar STL: <%= f.file_field :file %> 
   </div>
+  <%end%>
   <div class="field">
     <%= f.label :nombre, 'Nombre del Paciente' %><br>
     <%= f.text_field :nombre %>
@@ -104,7 +106,9 @@
   <div class="field">
     Imagen de Observacion: <%= f.file_field :cover %>
   </div>
-  <div class="actions">
-    <%= f.submit 'Realizar Pedido'%>
+  <div class="text-center">
+    <% if user_signed_in? %>
+      <%= render "payments/form", payment: Payment.new, pedido: @pedido %>
+    <% end %>
   </div>
 <% end %>

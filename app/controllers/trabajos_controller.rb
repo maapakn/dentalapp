@@ -69,6 +69,6 @@ class TrabajosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trabajo_params
-      params.require(:trabajo).permit(:nombre)
+      params.require(:trabajo).permit(:nombre, :precio)
     end
 end

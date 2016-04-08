@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dentalapp</title>
+  <title>Delab</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -10,35 +10,6 @@
 
 <p class="notice" style="<%= "display:none;" if notice.nil? %>"><%= notice %></p>
         <p class="alert" style="<%= "display:none;" if alert.nil? %>"><%= alert %></p>
-        <header>
-        	<nav>
-        		<ul class="nav nav-tabs">
-        			<li>
-        				<%= link_to "Inicio", root_path %>
-        			</li>
-        			<% if user_signed_in? %>
-        				<li>
-        					<%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete %>
-        				</li>
-        			<% end %>
-                    <li>
-                        <%= link_to "Ingresar", new_user_session_path %>
-                    </li>
-                    <li>
-                        <%= link_to "Realizar Pedido", pedidos_path %>
-                    </li>
-                    <li>
-                        <%= link_to "Dientes", dientes_path %>
-                    </li>
-                    <li>
-                        <%= link_to "Trabajos", trabajos_path %>
-                    </li>
-                    <li>
-                        <%= link_to "Materiales", materials_path %>
-                    </li>
-        		</ul>
-        	</nav>
-        </header>
 
 <%= yield %>
 

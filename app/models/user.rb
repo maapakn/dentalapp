@@ -16,5 +16,8 @@ class User < ActiveRecord::Base
   validates :direccion, presence: true
   validates :telefono, presence: true, numericality: true
 
+  def costo_pendiente
+    payments.where(status: 1).joins("INNER JOIN pedidos on pedidos.id == payments.pedido_id").sum("price")
+  end
 
 end
