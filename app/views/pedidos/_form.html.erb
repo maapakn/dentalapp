@@ -106,9 +106,7 @@
   <div class="field">
     Imagen de Observacion: <%= f.file_field :cover %>
   </div>
-  <div class="text-center">
-    <% if user_signed_in? %>
-      <%= render "payments/form", payment: Payment.new, pedido: @pedido %>
-    <% end %>
+  <div class="actions">
+    <%= f.submit %>
   </div>
 <% end %>

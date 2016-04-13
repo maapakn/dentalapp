@@ -18,4 +18,12 @@ class RegistrationsController < Devise::RegistrationsController
 		allow = [:email, :nombre, :direccion , :owner, :userconvenio, :supervisor, :telefono, :rut, :password, :facturacion, :roles_mask, :password_confirmation, :current_password]
 		params.require(resource_name).permit(allow)
 	end
+
+	#def after_sign_up_path_for(resource)
+    #'/welcome/index' # Or :prefix_to_your_route
+  	#end
+
+  	#def after_inactive_sign_up_path_for(resource)
+    #'welcome#index' # Or :prefix_to_your_route
+  	#end
 end
