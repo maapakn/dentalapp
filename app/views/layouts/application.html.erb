@@ -11,7 +11,26 @@
 
     <p class="notice" style="<%= "display:none;" if notice.nil? %>"><%= notice %></p>
     <p class="alert" style="<%= "display:none;" if alert.nil? %>"><%= alert %></p>
-
+		<header>
+        	<nav>
+        		<ul class="nav nav-tabs">
+        			<li>
+        				<%= link_to "home", authenticated_root_path %>
+        			</li>
+        			<% if user_signed_in? %>
+        				<li>
+        					<%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete %>
+        				</li>
+        			<% end %>
+                    <li>
+                        <%= link_to "Ingresar", new_user_session_path %>
+                    </li>
+                    <li>
+                        <%= link_to "Realizar Pedido", pedidos_path %>
+                    </li>
+        		</ul>
+        	</nav>
+        </header>
 <%= yield %>
 
 </body>

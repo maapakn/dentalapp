@@ -71,4 +71,5 @@ class TrabajosController < ApplicationController
     def trabajo_params
       params.require(:trabajo).permit(:nombre, :precio)
     end
+  end
 end

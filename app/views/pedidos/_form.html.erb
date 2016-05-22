@@ -46,7 +46,7 @@
   <div class="field">
   <label>Dientes</label>
   <div>
-    <select name="pedido[diente_ids][]" multiple="multiple">
+    <select name="pedido[diente_id]" multiple="multiple">
         <optgroup label="Zona 1">
             <option value="1">1.1</option>
             <option value="2">1.2</option>
@@ -91,7 +91,8 @@
     <script src="multiple-select.js"></script>
     <script>
         $("select").multipleSelect({
-            multiple: true,
+            single: true,
+            selectAll: false,
             multipleWidth: 55,
             width: '25%',
             placeholder: 'Seleccione El/Los Dientes'

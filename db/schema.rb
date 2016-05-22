@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329222812) do
+ActiveRecord::Schema.define(version: 20160522223928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,21 +61,14 @@ ActiveRecord::Schema.define(version: 20160329222812) do
     t.integer  "archivo_file_size"
     t.datetime "archivo_updated_at"
     t.string   "file"
+    t.integer  "diente_id"
+    t.string   "state"
   end
 
+  add_index "pedidos", ["diente_id"], name: "index_pedidos_on_diente_id", using: :btree
   add_index "pedidos", ["material_id"], name: "index_pedidos_on_material_id", using: :btree
   add_index "pedidos", ["trabajo_id"], name: "index_pedidos_on_trabajo_id", using: :btree
   add_index "pedidos", ["user_id"], name: "index_pedidos_on_user_id", using: :btree
-
-  create_table "pedidos_dientes", force: :cascade do |t|
-    t.integer  "pedido_id"
-    t.integer  "diente_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "pedidos_dientes", ["diente_id"], name: "index_pedidos_dientes_on_diente_id", using: :btree
-  add_index "pedidos_dientes", ["pedido_id"], name: "index_pedidos_dientes_on_pedido_id", using: :btree
 
   create_table "trabajos", force: :cascade do |t|
     t.string   "nombre"
@@ -126,11 +119,10 @@ ActiveRecord::Schema.define(version: 20160329222812) do
 
   add_foreign_key "payments", "pedidos"
   add_foreign_key "payments", "users"
+  add_foreign_key "pedidos", "dientes"
   add_foreign_key "pedidos", "materials"
   add_foreign_key "pedidos", "trabajos"
   add_foreign_key "pedidos", "users"
-  add_foreign_key "pedidos_dientes", "dientes"
-  add_foreign_key "pedidos_dientes", "pedidos"
   add_foreign_key "trabajos_materials", "materials"
   add_foreign_key "trabajos_materials", "trabajos"
 end

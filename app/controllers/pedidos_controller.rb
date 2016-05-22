@@ -1,6 +1,6 @@
 class PedidosController < ApplicationController
   before_action :set_pedido, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
 
   # GET /pedidos
   # GET /pedidos.json
@@ -16,7 +16,6 @@ class PedidosController < ApplicationController
   # GET /pedidos/new
   def new
     @pedido = Pedido.new
-    @dientes = Diente.all
   end
 
   # GET /pedidos/1/edit
@@ -29,18 +28,17 @@ class PedidosController < ApplicationController
     @pedido = Pedido.new(pedido_params)
 
     @pedido = current_user.pedidos.new(pedido_params)
-    @pedido.dientes = params[:dientes] 
     @pedido.file = params[:file]
     
-    #respond_to do |format|
-      #if @pedido.save
-        #format.html { redirect_to @pedido, notice: 'El Pedido se ha realizado' }
-        #format.json { render :show, status: :created, location: @pedido }
-      #else
-        #format.html { render :new }
-        #format.json { render json: @pedido.errors, status: :unprocessable_entity }
-      #end
-    #end
+    respond_to do |format|
+      if @pedido.save
+        format.html { redirect_to @pedido, notice: 'El Pedido se ha realizado' }
+        format.json { render :show, status: :created, location: @pedido }
+      else
+        format.html { render :new }
+        format.json { render json: @pedido.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /pedidos/1
@@ -84,6 +82,6 @@ class PedidosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pedido_params
-      params.require(:pedido).permit(:nombre, :observacion, :trabajo_id, :material_id, :cover, :archivo, :file, :diente_ids => [])
+      params.require(:pedido).permit(:nombre, :observacion, :trabajo_id, :material_id, :cover, :archivo, :file, :diente_id)
     end
 end

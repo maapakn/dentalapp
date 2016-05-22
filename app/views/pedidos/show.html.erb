@@ -19,10 +19,13 @@
 </p>
 
 <p>
+  <strong>Estado del Pedido:</strong>
+  <%= @pedido.state %>
+</p>
+
+<p>
   <strong>Dientes:</strong>
-  <% @pedido.dientes.each do |diente| %>
-      <h4><%= link_to diente.numero, diente %></h4>
-  <%end%>
+  <%= @pedido.diente.numero %>
 </p>
 
 <p>
