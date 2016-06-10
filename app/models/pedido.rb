@@ -41,16 +41,4 @@ class Pedido < ActiveRecord::Base
     @dientes = value
   end
 
-  private
-
-  #def mime_type_of
-  #  AVAILABLE::MIMETYPE.include?(MIME::Types.type_for[file_path][0]) 
-  #end
-
-  #def if_changed?
-  #  new_record? or file_changed?
-  #end
-
-  
-  
 end
